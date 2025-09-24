@@ -173,11 +173,11 @@ class _HomePageState extends State<HomePage> {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                  const Text('Money In', style: TextStyle(color: Colors.white70, fontSize: 14)),
+                                  const Text('Money In', style: TextStyle(color: Colors.lightGreenAccent, fontSize: 14)),
                                   const SizedBox(height: 4),
                                   Text(
                                     'KES ${_formatCurrency(moneyIn)}',
-                                    style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18),
+                                    style: const TextStyle(color: Colors.lightGreenAccent, fontWeight: FontWeight.bold, fontSize: 18),
                                   ),
                                 ],
                               ),
@@ -191,7 +191,7 @@ class _HomePageState extends State<HomePage> {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                  const Text('Money Out', style: TextStyle(color: Colors.white70, fontSize: 15)),
+                                  const Text('Money Out', style: TextStyle(color: Colors.lightGreenAccent, fontSize: 15)),
                                   const SizedBox(height: 4),
                                   Text(
                                     'KES ${_formatCurrency(moneyOut)}',
