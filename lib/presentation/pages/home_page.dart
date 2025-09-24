@@ -195,7 +195,7 @@ class _HomePageState extends State<HomePage> {
                                   const SizedBox(height: 4),
                                   Text(
                                     'KES ${_formatCurrency(moneyOut)}',
-                                    style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18),
+                                    style: const TextStyle(color: Colors.lightGreenAccent, fontWeight: FontWeight.bold, fontSize: 18),
                                   ),
                                 ],
                               ),
