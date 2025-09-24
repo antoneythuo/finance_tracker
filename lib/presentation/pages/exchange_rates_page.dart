@@ -19,6 +19,49 @@ class _ExchangeRatesPageState extends State<ExchangeRatesPage> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    // Load data when the page is first opened
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _loadData(context);
+    });
+  }
+
+  Future<void> _loadData(BuildContext context) async {
+    // Show loading dialog
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return const Center(
+          child: CircularProgressIndicator(
+            valueColor: AlwaysStoppedAnimation<Color>(Colors.green),
+          ),
+        );
+      },
+    );
+
+    try {
+      // Fetch exchange rates
+      await Provider.of<CurrencyProvider>(context, listen: false).fetchExchangeRates();
+      
+      // Close the loading dialog
+      if (mounted) {
+        Navigator.of(context).pop();
+      }
+    } catch (e) {
+      // Close the loading dialog on error
+      if (mounted) {
+        Navigator.of(context).pop();
+        // Show error message
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Failed to load exchange rates')),
+        );
+      }
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     final provider = Provider.of<CurrencyProvider>(context);
     final supportedCodes = ['USD','GBP','EUR','CNY','UGX','TZS','RWF','ZAR'];
